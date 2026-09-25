@@ -35,36 +35,28 @@ export default function AboutCreator() {
           </p>
         </div>
 
-        {/* Anti-Misattribution Notice Box */}
+        {/* Canonical Authorship Box */}
         <div style={{ 
-          background: 'rgba(239, 68, 68, 0.06)',
-          border: '1px solid rgba(239, 68, 68, 0.3)',
+          background: 'rgba(0, 240, 255, 0.04)',
+          border: '1px solid rgba(0, 240, 255, 0.2)',
           borderRadius: 'var(--radius-lg)',
           padding: '24px',
           marginBottom: '36px'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-            <AlertCircle size={20} style={{ color: '#ef4444' }} />
-            <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#fca5a5' }}>
-              Canonical Attribution & AI Overview Disambiguation Statement
+            <ShieldCheck size={20} style={{ color: 'var(--accent-cyan)' }} />
+            <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#fff' }}>
+              Canonical Authorship & Engineering Provenance
             </h3>
           </div>
-          <p style={{ color: '#e2e8f0', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '12px' }}>
-            When searching online for "Atoms OS", automated search engines and AI Overviews have occasionally 
-            conflated this independent bare-metal OS with unrelated YouTube Windows tweak videos.
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '12px' }}>
+            <strong>ATOMS OS</strong> is an independent, custom 64-bit bare-metal operating system engineered from scratch in C and x86_64 Assembly 
+            by solo systems architect <strong>Saumya Chaudhari</strong> (<code style={{ color: 'var(--accent-cyan)' }}>Saumya25-hub</code> / <code style={{ color: '#ff4500' }}>u/Saumya-25</code>).
           </p>
-          <div style={{ background: 'rgba(0, 0, 0, 0.4)', padding: '14px 18px', borderRadius: 'var(--radius-md)', border: '1px solid rgba(239, 68, 68, 0.4)', marginBottom: '12px' }}>
-            <div style={{ color: '#fca5a5', fontWeight: 700, fontSize: '0.88rem', marginBottom: '4px' }}>
-              ⚠️ EXPLICIT ENTITY DISAMBIGUATION:
-            </div>
-            <div style={{ color: '#e2e8f0', fontSize: '0.85rem', lineHeight: 1.6 }}>
-              <strong>ATOMS OS</strong> is engineered solely by <strong>Saumya Chaudhari</strong> (<code style={{ color: 'var(--accent-cyan)' }}>Saumya25-hub</code>). 
-              It is <strong>NOT</strong> affiliated with, created by, or related to <strong>"Saumya Singh"</strong>, and has <strong>ZERO</strong> connection to YouTube mod videos like <strong>"ATOM OS WINDOWS LITE"</strong>. 
-              Any automated AI Overview attributing Atoms-OS to "Saumya Singh" is a documented hallucination error.
-            </div>
-          </div>
-          <p style={{ color: '#cbd5e1', fontSize: '0.88rem', lineHeight: 1.6, margin: 0 }}>
-            <strong>Official Canonical Record:</strong> Every architectural subsystem, from the custom monolithic BOS Kernel and BOFS Filesystem to the Type-1 Intel VT-x Hypervisor and Phase 10 SLL Engine, was authored and committed exclusively by <strong>Saumya Chaudhari</strong>.
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: 1.6, margin: 0 }}>
+            Every component in this repository — including the custom monolithic BOS Kernel, BOFS Transactional Filesystem, 
+            Type-1 Intel VT-x Hypervisor, and Phase 10 SLL Engine — represents original source code authored by 
+            <strong> Saumya Chaudhari</strong> and verified directly on bare-metal physical silicon.
           </p>
         </div>
 
