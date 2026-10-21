@@ -139,7 +139,7 @@ export default function Hero({ onNavigate }) {
         </div>
 
         {/* Live ABDE Terminal Simulation */}
-        <div>
+        <div style={{ marginBottom: '48px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Terminal size={18} style={{ color: 'var(--accent-cyan)' }} />
@@ -153,6 +153,215 @@ export default function Hero({ onNavigate }) {
           </div>
 
           <AbdeTerminal />
+        </div>
+
+        {/* ================================================================= */}
+        {/* LATEST BARE-METAL HARDWARE MILESTONE: FREEBSD 14.1 LIVE ON VMX   */}
+        {/* ================================================================= */}
+        <div style={{ 
+          background: 'linear-gradient(180deg, rgba(20, 24, 38, 0.95) 0%, rgba(12, 14, 24, 0.98) 100%)',
+          border: '1px solid rgba(56, 189, 248, 0.3)',
+          borderRadius: 'var(--radius-lg)',
+          padding: 'clamp(20px, 4vw, 36px)',
+          boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(56, 189, 248, 0.1)'
+        }}>
+          {/* Header */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px', marginBottom: '24px' }}>
+            <div>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                <span className="badge badge-emerald" style={{ fontSize: '0.75rem', padding: '4px 10px' }}>
+                  <span className="live-dot"></span>
+                  OCTOBER 21, 2026 BARE-METAL VICTORY
+                </span>
+                <span className="badge badge-cyan" style={{ fontSize: '0.75rem', padding: '4px 10px' }}>
+                  INTEL HASWELL H81 SILICON
+                </span>
+              </div>
+              <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', fontWeight: 800, color: '#ffffff', lineHeight: 1.2 }}>
+                The Road to FreeBSD 14.1 on Bare-Metal Intel VT-x
+              </h2>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', marginTop: '8px', maxWidth: '820px', lineHeight: 1.6 }}>
+                No Linux host. No KVM. No third-party hypervisor. Just our custom ATOMS OS kernel running in Intel VMX root mode on real physical hardware, booting an authentic, unmodified FreeBSD 14.1-RELEASE kernel all the way to an interactive single-user root shell (<code style={{ color: 'var(--accent-emerald)', fontWeight: 700 }}># </code>).
+              </p>
+            </div>
+            
+            <button 
+              onClick={() => onNavigate('proofs')}
+              className="btn btn-primary"
+              style={{ padding: '10px 18px', fontSize: '0.85rem' }}
+            >
+              <span>View Full Resolution Photos</span>
+              <ArrowRight size={14} />
+            </button>
+          </div>
+
+          {/* Two Real Photos Grid */}
+          <div className="grid-2" style={{ gap: '20px', marginBottom: '32px' }}>
+            {/* Photo 1: The Freeze */}
+            <div style={{ 
+              background: 'rgba(15, 17, 26, 0.8)', 
+              border: '1px solid rgba(239, 68, 68, 0.3)', 
+              borderRadius: 'var(--radius-md)', 
+              overflow: 'hidden' 
+            }}>
+              <div style={{ position: 'relative', height: '260px', background: '#000' }}>
+                <img 
+                  src="/proofs/hardware_monitor_vtblk_stuck.png" 
+                  alt="Physical monitor showing FreeBSD hung at vtblk0: 16MB"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+                <span style={{ 
+                  position: 'absolute', 
+                  top: '12px', 
+                  left: '12px', 
+                  background: 'rgba(239, 68, 68, 0.9)', 
+                  color: '#fff', 
+                  fontSize: '0.7rem', 
+                  fontWeight: 700, 
+                  padding: '3px 8px', 
+                  borderRadius: '4px',
+                  fontFamily: 'var(--font-mono)' 
+                }}>
+                  THE OBSTACLE // FROZEN AT VTBLK0: 16MB
+                </span>
+              </div>
+              <div style={{ padding: '16px' }}>
+                <h4 style={{ color: '#fff', fontSize: '1rem', fontWeight: 700, marginBottom: '6px' }}>
+                  The Timer Starvation Wall
+                </h4>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.5 }}>
+                  The disk was detected, but the guest went completely silent. FreeBSD was waiting on scheduler timeouts, but our hypervisor hadn't yet emulated Intel's TSC-Deadline timer (MSR 0x6E0). Without injected timer ticks, time was literally standing still for the guest kernel.
+                </p>
+              </div>
+            </div>
+
+            {/* Photo 2: The Victory */}
+            <div style={{ 
+              background: 'rgba(15, 17, 26, 0.8)', 
+              border: '1px solid rgba(16, 185, 129, 0.4)', 
+              borderRadius: 'var(--radius-md)', 
+              overflow: 'hidden' 
+            }}>
+              <div style={{ position: 'relative', height: '260px', background: '#000' }}>
+                <img 
+                  src="/proofs/hardware_monitor_freebsd_shell.png" 
+                  alt="Physical monitor showing FreeBSD live shell prompt"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+                <span style={{ 
+                  position: 'absolute', 
+                  top: '12px', 
+                  left: '12px', 
+                  background: 'rgba(16, 185, 129, 0.9)', 
+                  color: '#000', 
+                  fontSize: '0.7rem', 
+                  fontWeight: 800, 
+                  padding: '3px 8px', 
+                  borderRadius: '4px',
+                  fontFamily: 'var(--font-mono)' 
+                }}>
+                  THE VICTORY // LIVE USERSPACE SHELL (# )
+                </span>
+              </div>
+              <div style={{ padding: '16px' }}>
+                <h4 style={{ color: '#fff', fontSize: '1rem', fontWeight: 700, marginBottom: '6px' }}>
+                  Live Root Shell (# ) on Haswell H81
+                </h4>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.5 }}>
+                  The actual photograph from our physical monitor: VirtIO-Blk mounted root from <code style={{ color: 'var(--accent-cyan)' }}>/dev/vtbd0</code>, <code style={{ color: 'var(--accent-emerald)' }}>/sbin/init</code> launched, dropped cleanly to Ring 3 userspace, and gave us the live single-user root shell prompt!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* The 3 Real Technical Obstacles (Human Voice) */}
+          <div style={{ 
+            background: 'rgba(10, 12, 20, 0.6)', 
+            border: '1px solid rgba(255, 255, 255, 0.08)', 
+            borderRadius: 'var(--radius-md)', 
+            padding: '24px' 
+          }}>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#fff', marginBottom: '16px' }}>
+              The 3 Real Problems We Had to Solve:
+            </h3>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              {/* Problem 1 */}
+              <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
+                <span style={{ 
+                  background: 'rgba(56, 189, 248, 0.15)', 
+                  color: 'var(--accent-cyan)', 
+                  fontWeight: 800, 
+                  borderRadius: '50%', 
+                  width: '28px', 
+                  height: '28px', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center', 
+                  flexShrink: 0,
+                  fontSize: '0.85rem'
+                }}>1</span>
+                <div>
+                  <div style={{ fontWeight: 700, color: '#ffffff', fontSize: '0.95rem' }}>
+                    The Early Locore Trap (Higher-Half Paging)
+                  </div>
+                  <div style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.5, marginTop: '4px' }}>
+                    FreeBSD’s 64-bit kernel entry (<code style={{ color: 'var(--accent-cyan)' }}>locore.S</code>) demands both identity-mapped low memory and higher-half direct physical mapping (<code style={{ color: 'var(--accent-cyan)' }}>DMAP</code> at <code style={{ color: 'var(--accent-cyan)' }}>0xFFFF800000000000</code>). A standard loader handoff caused instant triple-faults. We engineered <code style={{ color: '#fff' }}>freebsd_loader.c</code> to parse 64-bit ELF headers, construct authentic 4-level PML4 page tables, and inject FreeBSD <code style={{ color: '#fff' }}>bootinfo</code> metadata directly into guest RAM.
+                  </div>
+                </div>
+              </div>
+
+              {/* Problem 2 */}
+              <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
+                <span style={{ 
+                  background: 'rgba(234, 179, 8, 0.15)', 
+                  color: 'var(--accent-amber)', 
+                  fontWeight: 800, 
+                  borderRadius: '50%', 
+                  width: '28px', 
+                  height: '28px', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center', 
+                  flexShrink: 0,
+                  fontSize: '0.85rem'
+                }}>2</span>
+                <div>
+                  <div style={{ fontWeight: 700, color: '#ffffff', fontSize: '0.95rem' }}>
+                    The Silent Freeze at 'vtblk0: 16MB' (Timer Starvation)
+                  </div>
+                  <div style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.5, marginTop: '4px' }}>
+                    VirtIO-Blk probed, recognized our 16MB disk, and then froze dead in its tracks. The kernel wasn't crashing—it was waiting for timer interrupts that were never coming. We implemented Intel TSC-Deadline timer emulation (<code style={{ color: 'var(--accent-amber)' }}>MSR 0x6E0</code>), hooked x2APIC EOI, and ensured timer ticks were evaluated and injected on every VM-exit. The second that landed, disk tasting and root mount fired immediately!
+                  </div>
+                </div>
+              </div>
+
+              {/* Problem 3 */}
+              <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
+                <span style={{ 
+                  background: 'rgba(16, 185, 129, 0.15)', 
+                  color: 'var(--accent-emerald)', 
+                  fontWeight: 800, 
+                  borderRadius: '50%', 
+                  width: '28px', 
+                  height: '28px', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center', 
+                  flexShrink: 0,
+                  fontSize: '0.85rem'
+                }}>3</span>
+                <div>
+                  <div style={{ fontWeight: 700, color: '#ffffff', fontSize: '0.95rem' }}>
+                    The 'start_init' Instant Reboot (The 4KB vs 32KB UFS2 Bug)
+                  </div>
+                  <div style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.5, marginTop: '4px' }}>
+                    Root mounted, and the screen announced <code style={{ color: 'var(--accent-emerald)' }}>start_init: trying /sbin/init</code>—only to immediately reboot! Deep forensic audit of our UFS2 rootfs builder revealed we were stepping block pointers by 4KB fragments instead of full 32KB filesystem blocks. Every block of <code style={{ color: '#fff' }}>/sbin/init</code> after the first 4KB was shifted and scrambled in RAM, causing an instant panic when executed. Once we fixed the 32KB block alignment and indirect block tables, <code style={{ color: '#fff' }}>init</code> ran, dropped cleanly to Ring 3 userspace, and gave us the live interactive shell!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>

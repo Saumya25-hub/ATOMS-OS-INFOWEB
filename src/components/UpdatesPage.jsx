@@ -15,6 +15,19 @@ import { CERTIFICATION_MATRIX } from '../data/osData';
 export default function UpdatesPage() {
   const releases = [
     {
+      version: "v2.8.0-vmx-freebsd-live",
+      date: "October 21, 2026",
+      tag: "Latest Physical Silicon Milestone",
+      title: "Bare-Metal Intel VT-x Hypervisor Boots FreeBSD 14.1 to Interactive Root Shell (# )",
+      summary: "Historic hardware engineering victory: Booted an authentic, unmodified FreeBSD 14.1-RELEASE x86_64 kernel on physical Intel Haswell H81 hardware inside our custom scratch-built Type-1 Micro-Hypervisor. Resolved deep silicon obstacles across EPT higher-half paging, TSC-deadline timer starvation, and UFS2 block mapping to achieve an active single-user root shell in Ring 3.",
+      bulletPoints: [
+        "Fixed early kernel locore triple-fault: Built a zero-overhead long-mode direct ELF loader (freebsd_loader.c) establishing 4-level PML4 tables, identity mapping low RAM, and mapping higher-half DMAP (0xFFFF800000000000) with bootinfo metadata.",
+        "Overcame the 'vtblk0: 16MB' timer starvation freeze: Emulated Intel TSC-deadline timer (MSR 0x6E0), hooked x2APIC EOI, and ensured timer interrupts inject reliably across all VM-exits, unblocking the FreeBSD scheduler.",
+        "Fixed the 'start_init' instant reboot panic: Identified that our custom UFS2 rootfs builder was advancing 4KB fragments instead of 32KB blocks, corrupting /sbin/init pages in memory. Fixed block alignment and indirect block tables, restoring 100% byte-for-byte binary integrity.",
+        "Full Ring 0 to Ring 3 userspace transition: /sbin/init parsed /etc/ttys, spawned /bin/sh, and produced an interactive live root terminal prompt (# ) on the physical monitor."
+      ]
+    },
+    {
       version: "v2.7.0-vmx-stable",
       date: "September 24, 2026",
       tag: "Current Stable Hardware Release",

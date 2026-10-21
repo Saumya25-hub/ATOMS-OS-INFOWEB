@@ -15,7 +15,7 @@ export const CREATOR_INFO = {
   email: "saumyachaudhari25@outlook.com",
   license: "MIT License",
   licenseYear: "2026",
-  status: "v2.7.0-vmx-stable (Certified Physical Silicon)"
+  status: "v2.8.0-vmx-freebsd-live (Bare-Metal Shell Certified)"
 };
 
 export const HARDWARE_TESTBEDS = [
@@ -33,7 +33,9 @@ export const HARDWARE_TESTBEDS = [
       "4-Level PML4 Virtual Memory Ownership Teardown",
       "Stage A Kernel Heap (kmalloc / kfree)",
       "Legacy PIC 8259A Remap + Local APIC ICR/EOI",
-      "Per-CPU GDT and Dynamic TSS.RSP0 Stack Sync"
+      "Per-CPU GDT and Dynamic TSS.RSP0 Stack Sync",
+      "Intel VT-x (VMX) Type-1 Bare-Metal Micro-Hypervisor",
+      "FreeBSD 14.1-RELEASE Guest: VirtIO-Blk + Root Mount + Live Shell (# )"
     ]
   },
   {
@@ -384,8 +386,30 @@ export const NATIVE_SLL_LIBRARIES = [
   }
 ];
 
-// Complete 17-Item Real Proof Photos Gallery
+// Complete Real Proof Photos Gallery
 export const PROOF_PHOTOS = [
+  {
+    id: "hw-freebsd-shell-monitor",
+    title: "Physical Monitor: FreeBSD 14.1 Interactive Root Shell (# ) on Bare Metal VMX",
+    category: "Monitor",
+    hardware: "Intel Haswell H81 (Core i3 LGA1150, 8 GB RAM)",
+    date: "2026-10-21",
+    filename: "hardware_monitor_freebsd_shell.png",
+    image: "/proofs/hardware_monitor_freebsd_shell.png",
+    description: "Photograph of physical display showing the historic milestone: FreeBSD 14.1-RELEASE booted to an active single-user root shell (# ) inside ATOMS OS bare-metal Type-1 hypervisor. Dual console (Video Primary), /dev/vtbd0 UFS2 rootfs mounted, and /sbin/init successfully dropping into /bin/sh.",
+    forensicData: "Host: Atoms OS Bare-Metal Micro-Hypervisor | Guest: FreeBSD 14.1-RELEASE amd64 (GENERIC) | Root Disk: /dev/vtbd0 (UFS2 Minimal Fast File System) | CPL=3 Userspace Interactive Shell."
+  },
+  {
+    id: "hw-vtblk-stuck-monitor",
+    title: "The Hardware Obstacle: Guest Freeze at 'vtblk0: 16MB' (Timer Starvation)",
+    category: "Monitor",
+    hardware: "Intel Haswell H81 (Core i3 LGA1150)",
+    date: "2026-10-21",
+    filename: "hardware_monitor_vtblk_stuck.png",
+    image: "/proofs/hardware_monitor_vtblk_stuck.png",
+    description: "Real photo of the debugging wall: VirtIO block attached as 'vtblk0: 16MB (32768 512 byte sectors)', then hung indefinitely. Forensic telemetry revealed the FreeBSD kernel was waiting on timer callouts because Intel TSC-deadline timer (MSR 0x6E0) was not yet injected across VM-exits.",
+    forensicData: "Guest RIP: HLT loop; LAPIC Timer vector 239 not injected; Resolved by adding atoms_hypervisor_try_inject_lapic_timer() on all VM-exits."
+  },
   {
     id: "hw-hypervisor-monitor",
     title: "Physical Monitor: Intel VT-x Hypervisor Debug Dashboard",
@@ -595,8 +619,8 @@ export const STABILITY_MATRIX = [
   { subsystem: "BOFS Transactional WAL Filesystem", tier: "Filesystems", status: "ACTIVE", path: "kernel/vfs/" },
   { subsystem: "16-Phase Enterprise NTFS Driver Suite", tier: "Filesystems", status: "ACTIVE", path: "drivers/storage/ & docs/" },
   { subsystem: "AGDAE & BCM Double-Buffered Compositor", tier: "Graphics & UI", status: "ACTIVE", path: "kernel/wm/bcm/ & kernel/shell/" },
-  { subsystem: "Intel VT-x Type-1 Hypervisor (v2.7.0)", tier: "Virtualization", status: "ACTIVE", path: "kernel/core/hypervisor/" },
-  { subsystem: "FreeBSD Guest Virtualization Mode", tier: "Virtualization", status: "EXPERIMENTAL", path: "kernel/core/hypervisor/" },
+  { subsystem: "Intel VT-x Type-1 Hypervisor (v2.8.0)", tier: "Virtualization", status: "STABLE", path: "kernel/core/hypervisor/" },
+  { subsystem: "FreeBSD Guest Virtualization (Live Shell)", tier: "Virtualization", status: "STABLE", path: "kernel/core/hypervisor/" },
   { subsystem: "Phase 10 ATOMS SLL Engine", tier: "Userspace Runtimes", status: "ACTIVE", path: "kernel/core/sll/" },
   { subsystem: "Userspace Native .sll Layer (11 libs)", tier: "Userspace Runtimes", status: "ACTIVE", path: "userspace/libs/" },
   { subsystem: "JVM JIT Bytecode Adapter", tier: "Foreign Runtimes", status: "ACTIVE", path: "userspace/runtime/jvm_adapter/" },
